@@ -1,0 +1,18 @@
+<h3 class="text-success">Hello, {{user.first_name}} {{user.last_name}}</h3>
+
+<p>From National Library, You have suucessfully borrowed a {{borrow.book.title}} book.</p>
+
+<h6>Borrow Details:</h6>
+<ul>
+    <li>Borrow ID: {{borrow.id}}</li>
+    <li>Book Title: {{borrow.book.title}}</li>
+    <li>Author: {{borrow.book.author}}</li>
+    <li>Category: {{borrow.book.category}}</li>
+    <li>Borrow Price: {{borrow.book.borrow_price}}</li>
+    <li>Borrow Time: {{borrow.book.borrow_time}}</li>
+</ul>
+
+<p>From your library account {{borrow.book.borrow_price}} BDT has been charged  successfully for borrow this book. After charged your balance is {{user.account.balance}} BDT</p>
+
+<p>Thank you for staying with us.</p>
+<h4 class="text-primary">National Library</h4>

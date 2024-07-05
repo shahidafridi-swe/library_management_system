@@ -1,0 +1,38 @@
+
+<div class="mt-3">
+  <h2 class="my-font text-dark fw-bold">Boorrowed Books</h2>
+  <div class="table-responsive border border-info p-3 rounded">
+  <table class="table table-dark table-hover align-middle rounded">
+      <thead>
+        <tr >
+          <th class="text-info" scope="col">ID</th>
+          <th class="text-info" scope="col">Title</th>
+          <th class="text-info" scope="col">Author</th>
+          <th class="text-info" scope="col">Category</th>
+          <th class="text-info" scope="col">Borrow Price</th>
+          <th class="text-info" scope="col">Borrow Time</th>
+          <th class="text-info" scope="col">ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for borrow in borrows %}
+          <tr >
+              <th scope="row">{{borrow.id}}</th>
+              <td>{{borrow.book.title}}</td>
+              <td>{{borrow.book.author}}</td>
+              <td>{{borrow.book.category}}</td>
+              <td>{{borrow.book.borrow_price}}</td>
+              <td>{{borrow.borrow_time}}</td>
+              <td>
+                {% if borrow.book_returned == False %}
+                  <a class="btn btn-outline-warning" href="{% url "return_book" borrow.id %}">Return</a>
+                {% else %}
+                  <button class="btn btn-outline-info" disabled  >Returned</button>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

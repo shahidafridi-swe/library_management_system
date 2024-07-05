@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container border border-info rounded p-2 mt-5">
+   
+    <div class="d-flex row px-3">    
+        {% for category in categories %}
+            <div class="form-check mx-2 col-md-2 m-1">
+                <input class="form-check-input" type="radio" name="category" id="{{category.id}}">
+                <label class="form-check-label" for="{{category.id}}">
+                    <a class="text-decoration-none text-warning" href="{% url "category_wise_books" category.slug %}">{{category.name}}</a>
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+    
+</div> 
+<h5 class="mt-3 text-warning">Total Book: {{books.count}} Piece{{books.count | pluralize}}</h5>
+
+<div class="row row-cols-1 row-cols-md-4 g-4 border border-info rounded mt-3 mb-5">
+{% for book in books %}
+    <div class="col">
+        <div class="card bg-dark border-dark ">
+            {% if book.image %}
+            <img src="{{book.image.url}}" class="card-img-top " alt="...">
+            {% endif %} 
+            <div class="card-body text-white">
+                <h5 class="card-title text-info">{{book.title}}</h5>
+                <h6 class="card-title text-success fst-italic">{{book.author}}</h6>
+                <h6 class="text-warning">Borrow Price: {{book.borrow_price}} BDT</h6>
+                <h6 class="card-text text-warning">Category: {{book.category}}</h6>
+                <p class="card-text">Description: {{book.description|truncatewords:10}}</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-outline-warning w-100" href="{% url "book_details" book.id %}">View Details</a>
+            </div>
+        </div>
+  </div>
+{% endfor %}
+    
+</div>
+
+
+
+
+{% endblock content %}

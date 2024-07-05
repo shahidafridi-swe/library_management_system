@@ -79,7 +79,7 @@ def borrowBook(request, book_id):
     send_email.attach_alternative(email_message , 'text/html')
     send_email.send()
 
-    return redirect('book_details', id=book_id)
+    return redirect('borrowed_books')
 
 @login_required(login_url='login')
 def returnBook(request, borrow_id):

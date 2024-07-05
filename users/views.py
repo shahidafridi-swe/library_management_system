@@ -22,7 +22,7 @@ def registerUser(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created successfully for {username}!')
-            return redirect('home')
+            return redirect('login')
         else:
             messages.error(request, 'Please correct the errors below.')
     else:
